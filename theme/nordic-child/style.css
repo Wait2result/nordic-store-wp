@@ -1,0 +1,192 @@
+/*
+Theme Name:   Nordic & Co Child
+Theme URI:    https://github.com/YOUR_USERNAME/nordic-store-wp
+Description:  Child theme for the Nordic & Co WooCommerce store. Built on Storefront.
+              Customizes product grid layout, typography, colour palette, and checkout flow.
+Author:       Islam
+Author URI:   https://www.upwork.com/freelancers/~YOUR_ID
+Template:     storefront
+Version:      1.3.2
+License:      GNU General Public License v2 or later
+License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain:  nordic-child
+*/
+
+/* ─── Design tokens ──────────────────────────────────────── */
+
+:root {
+  --nc-sand:    #f5f0e8;
+  --nc-bark:    #8b7355;
+  --nc-pine:    #2d4a3e;
+  --nc-fog:     #e8e4dc;
+  --nc-charcoal:#2c2c2c;
+  --nc-white:   #fafaf8;
+  --nc-radius:  4px;
+  --nc-transition: 200ms ease;
+}
+
+/* ─── Base overrides ─────────────────────────────────────── */
+
+body {
+  background-color: var(--nc-white);
+  color: var(--nc-charcoal);
+  font-family: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--nc-pine); }
+a:hover { color: var(--nc-bark); }
+
+h1, h2, h3, h4 {
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ─── Header ─────────────────────────────────────────────── */
+
+.site-header {
+  background: var(--nc-white);
+  border-bottom: 1px solid var(--nc-fog);
+}
+
+.site-header .site-logo img {
+  max-height: 48px;
+}
+
+/* ─── Navigation ─────────────────────────────────────────── */
+
+.main-navigation ul li a {
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--nc-charcoal);
+  padding: 0.5rem 0.75rem;
+  transition: color var(--nc-transition);
+}
+
+.main-navigation ul li a:hover {
+  color: var(--nc-pine);
+}
+
+/* ─── WooCommerce — product grid ─────────────────────────── */
+
+ul.products {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 1.5rem !important;
+  float: none !important;
+  width: 100% !important;
+}
+
+ul.products li.product {
+  float: none !important;
+  width: auto !important;
+  margin: 0 !important;
+  border: 1px solid var(--nc-fog);
+  border-radius: var(--nc-radius);
+  overflow: hidden;
+  transition: border-color var(--nc-transition), box-shadow var(--nc-transition);
+  background: #fff;
+}
+
+ul.products li.product:hover {
+  border-color: var(--nc-bark);
+  box-shadow: 0 4px 16px rgba(0,0,0,.06);
+}
+
+ul.products li.product .woocommerce-loop-product__title {
+  font-size: 0.9375rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.75rem 1rem 0.25rem;
+}
+
+ul.products li.product .price {
+  font-size: 0.9375rem;
+  color: var(--nc-pine);
+  padding: 0 1rem;
+}
+
+/* ─── WooCommerce — buttons ──────────────────────────────── */
+
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button {
+  background: var(--nc-pine);
+  color: #fff;
+  border-radius: var(--nc-radius);
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.65rem 1.25rem;
+  transition: background var(--nc-transition);
+}
+
+.woocommerce a.button:hover,
+.woocommerce button.button:hover {
+  background: var(--nc-bark);
+  color: #fff;
+}
+
+/* ─── WooCommerce — single product ──────────────────────── */
+
+.woocommerce div.product div.summary .product_title {
+  font-size: 1.5rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.woocommerce div.product p.price {
+  font-size: 1.1rem;
+  color: var(--nc-pine);
+}
+
+/* ─── Cart & checkout ────────────────────────────────────── */
+
+.woocommerce table.shop_table {
+  border: none;
+}
+
+.woocommerce table.shop_table th {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  background: var(--nc-sand);
+}
+
+.woocommerce-checkout .woocommerce-billing-fields h3,
+.woocommerce-checkout .woocommerce-shipping-fields h3 {
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* ─── Footer ─────────────────────────────────────────────── */
+
+.site-footer {
+  background: var(--nc-charcoal);
+  color: #aaa;
+}
+
+.site-footer a { color: #ccc; }
+.site-footer a:hover { color: #fff; }
+
+/* ─── Responsive ─────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  ul.products {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  ul.products {
+    grid-template-columns: 1fr;
+  }
+}
